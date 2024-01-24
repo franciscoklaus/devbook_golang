@@ -3,6 +3,7 @@ package repositorios
 import (
 	"api/src/modelos"
 	"database/sql"
+	"fmt"
 )
 
 // Usuarios representa um repositorio de usuários
@@ -17,7 +18,7 @@ func NovoRespositorioDeUsuarios(db *sql.DB) *Usuarios {
 
 // Criar insere um usuario no banco de dados
 func (repositorio Usuarios) Criar(usuario modelos.Usuario) (uint64, error) {
-	statement, erro := repositorio.db.Prepare("inset into usuarios (nome, nick, email, senha) values(?,?,?,?)")
+	statement, erro := repositorio.db.Prepare("insert into usuarios (nome, nick, email, senha) values(?,?,?,?)")
 	if erro != nil {
 		return 0, nil
 	}
@@ -32,6 +33,8 @@ func (repositorio Usuarios) Criar(usuario modelos.Usuario) (uint64, error) {
 	if erro != nil {
 		return 0, nil
 	}
+
+	fmt.Println(ultimoIDInserido)
 
 	return uint64(ultimoIDInserido), nil
 
