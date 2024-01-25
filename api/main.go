@@ -8,6 +8,15 @@ import (
 	"net/http"
 )
 
+//func init() {
+//	chave := make([]byte, 64)
+//	if _, erro := rand.Read(chave); erro != nil {
+//		log.Fatal(erro)
+//	}
+//	stringBase64 := base64.StdEncoding.EncodeToString(chave)
+
+//}
+
 func main() {
 	config.Carregar()
 
